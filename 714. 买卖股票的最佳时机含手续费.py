@@ -13,6 +13,3 @@ class Solution:
                 res += prices[i]-buy
                 buy = prices[i]
         return res
-
-a = Solution()
-print(a.maxProfit([2,1,4,4,2,3,2,5,1,2],1))

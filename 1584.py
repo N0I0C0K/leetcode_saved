@@ -1,6 +1,5 @@
 from typing import List
-
-class Solution:
+class Solution: #kruskal
     def minCostConnectPoints(self, points: List[List[int]]) -> int:
         dist = lambda x, y: abs(points[x][0] - points[y][0]) + abs(points[x][1] - points[y][1])
         len_p = len(points)
@@ -37,3 +36,21 @@ class Solution:
                 if nums == len_p:
                     break
         return ret
+
+class Solution1: #Prim
+    def minCostConnectPoints(self, points: List[List[int]]) -> int:
+        dist = lambda x, y: abs(points[x][0] - points[y][0]) + abs(points[x][1] - points[y][1])
+        max_dis = 4000000
+        len_p = len(points)
+        v = list(range(len_p))
+        vnem = []
+        is_f = [False]*len_p
+        lowcost = [max_dis]*len_p
+        dis = []
+        for i in range(len_p):
+            temp = []
+            for j in range(len_p):
+                temp.append(dist(i,j))
+            dis.append(temp)
+        start = 0
+        is_f[start] = True

@@ -14,7 +14,7 @@ class Solution:
             left, right = 1, i
             while left < right:
                 mid = int((left+right)/2)
-                if dp[mid] > a:
+                if dp[mid] >= a:
                     right = mid
                 else:
                     left = mid + 1
@@ -26,4 +26,9 @@ class Solution:
             else:
                 dp[BinarySearch(index, nums[i])] = nums[i]
         return index
+
+
         
+a =Solution()
+print(a.lengthOfLIS([4,10,4,3,8,9]
+))

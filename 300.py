@@ -11,7 +11,7 @@ class Solution:
         dp[1] = nums[0]
         index = 1
         def BinarySearch(i:int, a:int) -> int:
-            left, right = 1, i
+            left, right = 1, i 
             while left < right:
                 mid = int((left+right)/2)
                 if dp[mid] >= a:

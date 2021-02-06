@@ -1,6 +1,8 @@
 #https://leetcode-cn.com/problems/maximum-points-you-can-obtain-from-cards/
 #动态规划 滑动窗口
 
+#补充几句，思路转化真的很重要，这道题乍一看像是动态规划其实不然，转化一下思路才是关键
+
 from typing import List
 
 class Solution:

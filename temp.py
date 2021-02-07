@@ -1,16 +1,26 @@
+#简单题的容身之处
+
+from typing import List
+
 class Solution:
-    def reverse(self, x: int) -> int:
-        s = str(x)
-        a = 0
-        if s[0] == '-':
-            s = s[1:]
-            s = s[::-1]
-            a =  int(s)*-1
-        else:
-            s = s[::-1]
-            a = int(s)
-        if a > 2147483647 or a < -2147483648:
-            return 0
-        return a
-a = Solution()
-print(a.reverse(-1))
+    def checkPossibility(self, nums: List[int]) -> bool:
+        len_n = len(nums)
+        if len_n == 1:
+            return True
+        m_num = 0
+        for i in range(len_n):
+            if i == 0:
+                if nums[i] > nums[i+1]:
+                    m_num += 1
+                    continue
+            elif i == len_n - 1:
+                if nums[i] < nums[i-1]:
+                    m_num += 1
+                    continue
+            else:
+                if nums[i] < nums[i-1] or nums[i] > nums[i+1]:
+                    m_num += 1
+                    continue
+            if m_num >= 2:
+                return False
+        return True

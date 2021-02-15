@@ -3,15 +3,15 @@
 from typing import List
 
 class Solution:
-    def findDisappearedNumbers(self, nums: List[int]) -> List[int]:
-        MAX = len(nums)
-        num = [0]*(MAX+1)
-        for i in nums:
-            num[i] = i
-        re = []
-        for i in range(1,MAX+1):
-            if num[i] != i:
-                re.append(i)
-        return re
-
-
+    def findMaxConsecutiveOnes(self, nums: List[int]) -> int:
+        max_num = 0
+        len_n = len(nums)
+        temp_num = 0
+        for i in range(len_n):
+            if nums[i] == 1:
+                temp_num += 1
+            else:
+                temp_num = 0
+            if temp_num > max_num:
+                max_num = temp_num
+        return max_num

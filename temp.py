@@ -4,21 +4,30 @@
 from typing import List
 
 class Solution:
-    def matrixReshape(self, nums: List[List[int]], r: int, c: int) -> List[List[int]]:
-        h = len(nums)
-        w = len(nums[0])
-        if h*w != r*c:
-            return nums
-        re = []
-        n = 0
-        temp = []
-        for item in nums:
-            for i in item:
-                if n < c:
-                    temp.append(i)
-                    n += 1
-                if n == c:
-                    re.append(temp)
-                    temp = []
-                    n = 0
-        return re
+    def longestSubarray(self, nums: List[int], limit: int) -> int:
+        start, end = 0, -1
+        max_len = 0
+        while start < len(nums):
+            max_t = nums[start]
+            min_t = nums[start]
+            for i in range(start, len(nums)):
+                end += 1
+                if nums[end] > max_t:
+                    max_t = nums[end]
+                elif nums[end] < min_t:
+                    min_t = nums[end] 
+                if abs(max_t - min_t) <= limit:
+                    continue
+                else:
+                    if end - start > max_len:
+                        max_len = end -start
+                    break
+            else:
+                if end - start + 1 > max_len:
+                    max_len = end -start + 1
+            end = start
+            start += 1
+        return max_len
+
+a = Solution()
+print(a.longestSubarray([10,1,2,4,7,2], 5))

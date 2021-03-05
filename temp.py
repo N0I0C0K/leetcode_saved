@@ -1,3 +1,5 @@
+# github最近推送有问题
+
 class MyQueue:
     
     def __init__(self):

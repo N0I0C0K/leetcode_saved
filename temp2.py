@@ -1,23 +1,26 @@
-from typing import List
-
+#Definition for a binary tree node.
+class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
 class Solution:
-    def isToeplitzMatrix(self, matrix: List[List[int]]) -> bool:
-        re = True
-        m = len(matrix)
-        n = len(matrix[0])
-        for i in range(n):
-            for j in range(1, m):
-                if j < m and i+j < n:
-                    if matrix[j][j+i] != matrix[j-1][j+i-1]:
-                        return False
-        for i in range(m):
-            for j in range(1, n):
-                if i + j < m:
-                    if matrix[j+i][j] != matrix[j+i-1][j-1]:
-                        return False
-        return True
-
-a = Solution()
-print(a.isToeplitzMatrix(   [[36,59,71,15,26,82,87],
-                            [56,36,59,71,15,26,82],
-                            [15,0,36,59,71,15,26]]))
+    def leafSimilar(self, root1: TreeNode, root2: TreeNode) -> bool:
+        def dfs(node: TreeNode,re: list):
+            if node is None:
+                return
+            if node.left is None and node.right is None:
+                re.append(node.val)
+            dfs(node.left, re)
+            dfs(node.right, re)
+        r1 = []
+        r2 = []
+        dfs(root1, r1)
+        dfs(root2, r2)
+        if len(r1) == len(r2):
+            for i in range(len(r1)):
+                if r1[i] != r2[i]:
+                    return False
+            else:
+                return True
+        return False

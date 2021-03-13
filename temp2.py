@@ -5,22 +5,18 @@ class TreeNode:
         self.left = left
         self.right = right
 class Solution:
-    def leafSimilar(self, root1: TreeNode, root2: TreeNode) -> bool:
-        def dfs(node: TreeNode,re: list):
-            if node is None:
-                return
-            if node.left is None and node.right is None:
-                re.append(node.val)
-            dfs(node.left, re)
-            dfs(node.right, re)
-        r1 = []
-        r2 = []
-        dfs(root1, r1)
-        dfs(root2, r2)
-        if len(r1) == len(r2):
-            for i in range(len(r1)):
-                if r1[i] != r2[i]:
-                    return False
-            else:
-                return True
-        return False
+    def isBalanced(self, root: TreeNode) -> bool:
+        def dfs(node: TreeNode):
+            if node == None:
+                return 0
+            he_le = dfs(node.left)
+            he_ri = dfs(node.right)
+            if abs(he_le - he_ri) > 1:
+                return -10
+            if he_le == -10 or he_ri == -10:
+                return -10
+            he = max(he_le, he_ri)
+            return he+1
+        
+        return True if dfs(root) != -10 else False
+            

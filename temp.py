@@ -1,20 +1,16 @@
-from typing import List
-
-class Solution:
-    def minElements(self, nums: List[int], limit: int, goal: int) -> int:
-        all = 0
-        for i in nums:
-            all+=i
-        if all<=goal:
-            all = goal - all
-            if all % limit == 0:
-                return int(all/limit)
-            else:
-                return int(all/limit)+1
+def main():
+    print('======数据管理======')
+    print('  1------输入')
+    print('  2------输出')
+    print('  3------查询')
+    print('  else---退出')
+    print('=====================')
+    while True:
+        a = int(input("请输入选择(1---3)>>"))
+        if a > 0 and a < 4:
+            print('--')
         else:
-            all = all-goal
-            if all % limit == 0:
-                return int(all/limit)
-            else:
-                return int(all/limit)+1
-
+            break
+    print('thanks for using!')
+if __name__ == '__main__':
+    main()

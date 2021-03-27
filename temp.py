@@ -1,19 +1,17 @@
-i = float(input())
-def getans(x:float) -> float:
-    return pow(x, 5)-2*pow(x,4)+x**2-3
-l, r = 0.0, 2.0
-
-
-while True:
-    m = (l+r)/2
-    a = getans(m)
-    if abs(a - 0) <= i:
-        print('{:.8f}'.format(m))
-        break
-    elif a*getans(r) < 0:
-        l = m
-        continue
-    elif a*getans(l) < 0:
-        r = m
-        continue
-
+#Definition for singly-linked list.
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next:ListNode = next
+class Solution:
+    def deleteDuplicates(self, head: ListNode) -> ListNode:
+        cur = ListNode(0,head)
+        res = cur
+        while res.next and res.next.next:
+            if res.next.val == res.next.next.val:
+                x = res.next.next.val
+                while res.next.next and res.next.next.val == x:
+                    res.next.next = res.next.next.next
+            else:
+                res = res.next
+        return cur.next

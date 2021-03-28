@@ -1,7 +1,5 @@
-n = int(input())
-for _ in range(n):
-    n, m, idx = map(int, input().split(' '))
-    x = idx%n-1
-    y = int(idx/n)+1
-    ans = x*m+y
-    print(f'{ans}')
+n, m = map(int, input().split())
+all = 0
+for i in range(n):
+    x,t = map(int, input().split())
+    if x+t 

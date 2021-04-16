@@ -4,7 +4,7 @@
 
 from typing import List
 
-class Solution:
+class Solution_2:
     def lengthOfLIS(self, nums: List[int]) -> int:
         len_n = len(nums)
         dp = [0]*(len_n+1)
@@ -27,8 +27,17 @@ class Solution:
                 dp[BinarySearch(index, nums[i])] = nums[i]
         return index
 
+class Solution:
+    def lengthOfLIS(self, nums: List[int]) -> int:
+        l_n = len(nums)
+        dp = [1]*l_n
+        for i in range(1,l_n):
+            for j in range(i):
+                if nums[i] > nums[j]:
+                    dp[i] = max(dp[j]+1, dp[i])
+        return max(dp)
 
         
 a =Solution()
-print(a.lengthOfLIS([4,10,4,3,8,9]
+print(a.lengthOfLIS([1,3,6,7,9,4,10,5,6]
 ))

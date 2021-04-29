@@ -1,7 +1,5 @@
-from typing import List
-
 class Solution:
-    def largestDivisibleSubset(self, nums: List[int]) -> List[int]:
+    def largestDivisibleSubset(self, nums):
         nums.sort()
         n = len(nums)
         dp,g = [0]*n, [0]*n
@@ -18,14 +16,15 @@ class Solution:
             if length > max_len:
                 max_len = length
                 max_idx = i
-        
+
         ans = []
         while len(ans) < max_len:
             ans.append(nums[max_idx])
             max_idx = g[max_idx]
-        ans.reverse()
-        return ans
+        return len(ans)
 
+n = int(input())
+li = list(map(int,input().split()))
 
 a = Solution()
-print(a.largestDivisibleSubset([1,2,6,4,8,3]))
+print(a.largestDivisibleSubset(li))

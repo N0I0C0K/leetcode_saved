@@ -1,2 +1,3 @@
-n = int(input())
-nums = list(map(int, input().split()))
+for i in range(1, 51):
+    if i%3 == 0:
+        print(i,end=' ')

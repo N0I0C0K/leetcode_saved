@@ -10,6 +10,11 @@ class Solution:
             if s[i-1] != '0':
                 if n > 0 and n < 27:
                     dp[i]+=1
+            else:
+                if int(s[i-2:i])<27 and int(s[i-2:i]) > 0:
+                    dp[i]+=1
+                if s[i] != '0':
+                    dp[i]+=1
         return dp[len(s)-1]
 
 a = Solution()

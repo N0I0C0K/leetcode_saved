@@ -1,6 +1,6 @@
 from typing import List
 
-class Solution:
+class Solution_pre:
     def canPartition(self, nums: List[int]) -> bool:
         len_nums = len(nums)
         tar:int = 0
@@ -23,6 +23,18 @@ class Solution:
 
         return dp[len_nums-1][tar]
 
+class Solution:
+    def canPartition(self, nums: List[int]) -> bool:
+        n = sum(nums)
+        if n%2 != 0:
+            return False
+        m = int(n/2)
+        dp = [False]*(m+1)
+        dp[0] = True
+        for num in nums:
+            for i in range(m,num-1,-1):
+                dp[i] = dp[i] or dp[i-num]
+        return dp[m]
 
 a = Solution()
 print(a.canPartition([1, 5, 11, 5,4]))

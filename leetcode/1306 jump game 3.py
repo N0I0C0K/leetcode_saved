@@ -1,6 +1,6 @@
 from typing import List
 
-class Solution:
+class Solution1:
     def canReach(self, arr: List[int], start: int) -> bool:
         rod = []
         rod.append(start)
@@ -16,6 +16,10 @@ class Solution:
             if idx-arr[idx] >= 0 and not is_vis[idx-arr[idx]]:
                 rod.append(idx-arr[idx])
         return False
+
+class Solution:
+    def canReach(self, arr: List[int], start: int) -> bool:
+        
 
 a = Solution()
 print(a.canReach([4,2,3,0,3,1,2], 0))

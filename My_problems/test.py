@@ -1,5 +1,4 @@
 import heapq
-import random
 
 class Solution:
     def maxResult(self, nums:list, k: int) -> int:
@@ -16,17 +15,7 @@ class Solution:
             heapq.heappush(heap, (dp[i], i))
         return dp[len_n-1]
 
-def generateData(n:int,k:int, idx:str):
-    nums = [random.randint(-100, 500) for _ in range(n)]
-    so = Solution()
-    res = so.maxResult(nums, k)
-    
-    with open(f'input-{idx}.txt','w') as file:
-        file.write(f'{n} {k}\n')
-        file.write(str(nums).replace(',', '')[1:-1]+'\n')
-        pass
-    with open(f'out-put{idx}.txt', 'w') as file:
-        file.write(f'{res}')
-
-if __name__ == '__main__':
-    generateData(5000, 1000,5)
+n,k = map(int, input().split())
+nums = list(map(int, input().split()))
+a = Solution()
+print(a.maxResult(nums, k))

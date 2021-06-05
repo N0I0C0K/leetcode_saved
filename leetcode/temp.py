@@ -1,4 +1,4 @@
-n,t = map(int, input().split())
+n,t = map(int, input().split()) #
 cost = list(map(int, input().split()))
 cost.sort()
 res = 0

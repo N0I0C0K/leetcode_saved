@@ -1,6 +1,7 @@
 #include<cstdio>
 #include<cmath>
 #include<cstring>
+#include<algorithm>
 using namespace std;
 
 const int MAX = 5e4+5;

@@ -1,12 +1,11 @@
-nnn = int(input())
-for _ in range(nnn):
+import math
+n = int(input())
+for _ in range(n):
     x = int(input())
-    s = input()
-    s = list(s)
-    s_p = s.copy()
-    s.sort(reverse=False)
-    nums = 0
-    for i in range(x):
-        if(s_p[i] != s[i]):
-            nums+=1
-    print(nums)
+    if(x <= 6):
+        print(15)
+    else:
+        if x%2 == 0:
+            print(int(x*2.5))
+        else:
+            print(int((x+1)*2.5))

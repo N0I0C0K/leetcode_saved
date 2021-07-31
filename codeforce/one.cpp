@@ -1,28 +1,23 @@
 #include<cstdio>
-#include<algorithm>
-#include<cstring>
-
 using namespace std;
 
-char s[50];
-char s_p[50];
 int main()
 {
-    int n,x;
+    int n;
+    long long int x = 0;
     scanf("%d",&n);
-    for (size_t i = 0; i < n; i++)
+    while (n--)
     {
-        scanf("%d",&x);
-        scanf("%s",s);
-        strcpy(s_p, s);
-        sort(s, s+x);
-        int nums = 0;
-        for (size_t j = 0; j < x; j++)
-        {
-            if(s[j] != s_p[j])
-                nums++;
+        scanf("%lld", &x);
+        if(x<=6)
+            printf("15\n");
+        else{
+            if(x%2 == 0)
+                x = x*(2.5);
+            else
+                x = (x+1)*(2.5);
+            printf("%lld\n",x);
         }
-        printf("%d\n",nums);
     }
     
 }

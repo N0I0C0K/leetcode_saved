@@ -3,21 +3,12 @@ using namespace std;
 
 int main()
 {
-    int n;
-    long long int x = 0;
-    scanf("%d",&n);
-    while (n--)
+    int t,x;
+    scanf("%d",&t);
+    while(t--)
     {
-        scanf("%lld", &x);
-        if(x<=6)
-            printf("15\n");
-        else{
-            if(x%2 == 0)
-                x = x*(2.5);
-            else
-                x = (x+1)*(2.5);
-            printf("%lld\n",x);
-        }
+        scanf("%d",&x);
+        printf("2 %d\n",x-1);
     }
-    
+    return 0;
 }

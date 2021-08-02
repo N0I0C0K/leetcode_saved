@@ -5,7 +5,18 @@
         "xstddef": "cpp",
         "xstring": "cpp",
         "queue": "cpp",
-        "deque": "cpp"
+        "deque": "cpp",
+        "cmath": "cpp",
+        "cstdio": "cpp",
+        "cstdlib": "cpp"
     },
-    "C_Cpp.errorSquiggles": "Disabled"
+    "C_Cpp.errorSquiggles": "Enabled",
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "type_problems/*.exe":true
+    }
 }

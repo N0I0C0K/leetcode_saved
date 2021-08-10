@@ -17,6 +17,6 @@
         "**/.hg": true,
         "**/CVS": true,
         "**/.DS_Store": true,
-        "type_problems/*.exe":true
+        "**/*.exe":true
     }
 }

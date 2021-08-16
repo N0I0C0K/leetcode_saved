@@ -3,12 +3,23 @@ using namespace std;
 
 int main()
 {
-    int t,x;
+    int t,n,x;
+    long long ma,mi;
     scanf("%d",&t);
     while(t--)
     {
-        scanf("%d",&x);
-        printf("2 %d\n",x-1);
+        scanf("%d",&n);
+        ma = 0;
+        mi = 1e9;
+        while(n--)
+        {
+            scanf("%d",&x);
+            if(x>ma)
+                ma = x;
+            if(x<mi)
+                mi =x;
+        }
+        printf("%d\n",(ma&mi));
     }
     return 0;
 }

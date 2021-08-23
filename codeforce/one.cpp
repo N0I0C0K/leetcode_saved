@@ -1,25 +1,39 @@
 #include<cstdio>
+#include<cmath>
 using namespace std;
+using ll = long long;
+using uint = unsigned int;
+const int inf = 0x3f3f3f3f;
 
 int main()
 {
-    int t,n,x;
-    long long ma,mi;
-    scanf("%d",&t);
+    ll t,x,l,r,mid,row,c;
+    scanf("%lld",&t);
     while(t--)
     {
-        scanf("%d",&n);
-        ma = 0;
-        mi = 1e9;
-        while(n--)
+        scanf("%lld",&x);
+        l = 1,r = 1e5;
+        while (l<=r)
         {
-            scanf("%d",&x);
-            if(x>ma)
-                ma = x;
-            if(x<mi)
-                mi =x;
+            mid = l+r>>1;
+            if(mid*mid >= x)
+                r = mid-1;
+            else
+                l = mid+1;
         }
-        printf("%d\n",(ma&mi));
+        mid = l;
+        ll al = mid*mid;
+        if(al - x >= mid)
+        {
+            row = mid-(al-mid-x+1);
+            c = mid;
+        }
+        else
+        {
+            c = al-x+1;
+            row = mid;
+        }
+        printf("%lld %lld\n",row,c);
     }
     return 0;
 }

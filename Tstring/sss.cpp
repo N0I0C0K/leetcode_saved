@@ -25,7 +25,7 @@ bool kmpf(string a)
     int n = a.length();
     int tar = t.length();
     memset(kmp, 0, sizeof kmp);
-    for (int i = 1; i <= n; ++i)
+    for (int i = 1; i < n; ++i)
     {
         int j = kmp[i-1];
         while(j>0&&a[j]!=a[i]) j = kmp[j-1];

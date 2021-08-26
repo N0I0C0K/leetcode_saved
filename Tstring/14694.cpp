@@ -41,7 +41,7 @@ int main()
         {
             scanf("%d",&now);
             if(i>m)
-                nums[i-2] = now-pre;//((now-pre)%k+k)%k;
+                nums[i-2] = ((now-pre)%k+k)%k;
             pre = now;
             //scanf("%d",&nums[i]);
         }
@@ -49,7 +49,7 @@ int main()
         {
             scanf("%d",&now);
             if(i>0)
-                nums[i-1] = now-pre;//((now-pre)%k+k)%k;
+                nums[i-1] = ((now-pre)%k+k)%k;
             pre = now;
             //scanf("%d",&nums[i]);
         }

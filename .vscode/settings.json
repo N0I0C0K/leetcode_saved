@@ -8,7 +8,9 @@
         "deque": "cpp",
         "cmath": "cpp",
         "cstdio": "cpp",
-        "cstdlib": "cpp"
+        "cstdlib": "cpp",
+        "unordered_map": "cpp",
+        "xhash": "cpp"
     },
     "C_Cpp.errorSquiggles": "Enabled",
     "files.exclude": {

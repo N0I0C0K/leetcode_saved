@@ -5,15 +5,15 @@ using ll = long long;
 using uint = unsigned int;
 const int inf = 0x3f3f3f3f;
 
-int kmp[100];
-char s[10000010];
+ll kmp[1000010];
+char s[1000010];
 
 void fkmp(int n)
 {
     memset(kmp, 0, sizeof kmp);
     for (int i = 1; i < n; ++i)
     {
-        int j = kmp[i-1];
+        ll j = kmp[i-1];
         while (j>0&&s[j] != s[i])
         {
             j = kmp[j-1];
@@ -21,8 +21,29 @@ void fkmp(int n)
         if(s[i] == s[j]) ++j;
         kmp[i] = j;
     }
-    
 }
+
+
+/**************关键*****************************/
+ll find(int n)
+{
+    ll t = kmp[n-1],res = 0;
+    //逐个枚举“最长”前缀
+    while (t>0)
+    {
+        for (int i = 0; i < n-1; ++i)
+        {
+            if(kmp[i] == t)
+            {
+                return t;
+            }
+        }
+        //如果当前长度不满足，t就应该等于他本身的前缀长度比如：aabbaa..(若干)..aabbaa 如果t=6不满足，那么t就应该等于aabbaa的前后缀长度即t = 2
+        t = kmp[t-1];
+    }
+    return 0;
+}
+
 int main()
 {
     int t;
@@ -32,19 +53,10 @@ int main()
         scanf("%s",s);
         int n = strlen(s);
         fkmp(n);
-        int t = kmp[n-1],res = 0;
-        bool ok = false;
-        for (int i = 1; i<n-1 ; ++i)
+        ll res = find(n);
+        if(res)
         {
-            if(kmp[i] <= t && kmp[i] > res)
-            {
-                ok = true;
-                res = kmp[i];
-            }
-        }
-        if(ok)
-        {
-            for (int i = 0; i < res; ++i)
+            for (ll i = 0; i < res; ++i)
             {
                 putchar(s[i]);
             }

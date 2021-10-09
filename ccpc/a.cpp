@@ -1,4 +1,4 @@
-#include<cstdio>
+#include <cstdio>
 using namespace std;
 using ll = long long;
 using uint = unsigned int;

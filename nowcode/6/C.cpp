@@ -1,29 +1,30 @@
-#include<cstdio>
-#include<algorithm>
-#include<vector>
+#include <iostream>
+#include <algorithm>
 using namespace std;
-using ppair = pair<int, int>;
-ppair rings[1010];
+typedef long long ll;
 
 int main()
 {
-    int n,a,b,x,y;
-    scanf("%d",&n);
-    for(int tt = 0;tt<n;++tt)
+    // freopen("a5.in", "r", stdin);
+    // freopen("a5.out", "w", stdout);
+    int t;
+    cin >> t;
+    ll x, y;
+    while (t--)
     {
-        scanf("%d%d",&a,&b);
-        for(int ttt = 0;ttt < b;++ttt)
+        cin >> x >> y;
+        if (x == y)
         {
-            scanf("%d%d",&rings[ttt].first, &rings[ttt].second);
+            cout << x << endl;
+            continue;
         }
-        sort(rings, rings+b);
-        printf("%d\n", b);
-        for(int i = 0;i<b;++i)
+        if (x > y)
         {
-            if(i == 0)
-                printf("%d %d\n",rings[i].first, rings[b-1].second);
-            else
-                printf("%d %d\n",rings[i].first, rings[i-1].second);
+            cout << x + y << endl;
+        }
+        else
+        {
+            cout << y - (y % x) / 2 << endl;
         }
     }
     return 0;

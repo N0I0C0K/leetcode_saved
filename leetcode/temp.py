@@ -1,11 +1,7 @@
-n,t = map(int, input().split()) #
-cost = list(map(int, input().split()))
-cost.sort()
-res = 0
-for i in range(n):
-    if res+cost[i] > t:
-        print(i)
-        break
-    else:
-        res+=cost[i]
-        pass
+from typing import *
+
+
+class Solution:
+    def findKthLargest(self, nums: List[int], k: int) -> int:
+        nums.sort(reverse=True)
+        return nums[k-1]

@@ -39,15 +39,19 @@ bool spfa(int s)
     memset(inqueue, false, sizeof inqueue);
     dis[s] = 0;
     queue<int> que;
-    // for (int i = 1; i <= n; ++i)
-    // {
-    //     que.push(i);
-    //     inqueue[i] = true;
-    //     in[i]++;
-    // }
-    que.push(s);
-    inqueue[s] = true;
-    in[s]++;
+    //  第一种是把每个点都作为起始点
+    for (int i = 1; i <= n; ++i)
+    {
+        que.push(i);
+        inqueue[i] = true;
+        in[i]++;
+    }
+    //****************
+    //第二种是添加一层n+1->每个点w为0
+    // que.push(s);
+    // inqueue[s] = true;
+    // in[s]++;
+    //************
     while (!que.empty())
     {
         int t = que.front();
@@ -81,9 +85,10 @@ int main()
         scanf("%d%d%d", &a, &b, &c);
         addEdge(b, a, c);
     }
-    for (int i = 0; i <= n; ++i)
-        addEdge(n + 1, i, 0);
-    if (spfa(n + 1))
+    // 第二种
+    // for (int i = 0; i <= n; ++i)
+    //     addEdge(n + 1, i, 0);
+    if (spfa(1))
     {
         for (int i = 1; i <= n; ++i)
             printf("%d%c", dis[i], i < n ? ' ' : '\n');

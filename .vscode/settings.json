@@ -10,7 +10,8 @@
         "cstdio": "cpp",
         "cstdlib": "cpp",
         "unordered_map": "cpp",
-        "xhash": "cpp"
+        "xhash": "cpp",
+        "ostream": "cpp"
     },
     "C_Cpp.errorSquiggles": "Enabled",
     "files.exclude": {
@@ -19,6 +20,6 @@
         "**/.hg": true,
         "**/CVS": true,
         "**/.DS_Store": true,
-        "**/*.exe":true
+        "**/*.exe": true
     }
 }

@@ -9,7 +9,7 @@ using ll = long long;
 using uint = unsigned int;
 const int inf = 0x3f3f3f3f;
 
-const int maxn = 10;
+const int maxn = 5005;
 
 int cnt = 0;
 int p[maxn];
@@ -37,15 +37,17 @@ bool spfa(int s)
     memset(dis, inf, sizeof dis);
     memset(in, 0, sizeof in);
     memset(inqueue, false, sizeof inqueue);
-    dis[0] = 0;
     dis[s] = 0;
     queue<int> que;
-    for (int i = 1; i <= n; ++i)
-    {
-        que.push(i);
-        inqueue[i] = true;
-        in[i]++;
-    }
+    // for (int i = 1; i <= n; ++i)
+    // {
+    //     que.push(i);
+    //     inqueue[i] = true;
+    //     in[i]++;
+    // }
+    que.push(s);
+    inqueue[s] = true;
+    in[s]++;
     while (!que.empty())
     {
         int t = que.front();
@@ -79,7 +81,9 @@ int main()
         scanf("%d%d%d", &a, &b, &c);
         addEdge(b, a, c);
     }
-    if (spfa(1))
+    for (int i = 0; i <= n; ++i)
+        addEdge(n + 1, i, 0);
+    if (spfa(n + 1))
     {
         for (int i = 1; i <= n; ++i)
             printf("%d%c", dis[i], i < n ? ' ' : '\n');

@@ -1,4 +1,4 @@
-//https://www.luogu.com.cn/problem/P3275
+// https://www.luogu.com.cn/problem/P3403
 #include <queue>
 #include <cstdio>
 #include <cstring>
@@ -8,8 +8,8 @@ using ll = long long;
 using uint = unsigned int;
 const int inf = 0x3f3f3f3f;
 
-const int maxm = 300010; //边的最大数量;
-const int maxn = 100005; //节点的最大数量
+const int maxm = 200002; //边的最大数量;
+const int maxn = 20002;  //节点的最大数量
 int cnt = 0;
 int p[maxn]; //节点指向的边
 
@@ -35,7 +35,7 @@ void addEdge(int from, int to, int weight)
 // 求的是s 到每个节点的最短距离
 bool spfa(int s)
 {
-    memset(dis, 0xaf, sizeof dis);
+    memset(dis, inf, sizeof dis);
     memset(inqueue, false, sizeof inqueue);
     memset(in, 0, sizeof in);
     queue<int> que;
@@ -51,7 +51,7 @@ bool spfa(int s)
         for (int i = p[t]; i; i = edges[i].next)
         {
             auto to = edges[i].to;
-            if (dis[to] < dis[t] + edges[i].w)
+            if (dis[to] > dis[t] + edges[i].w)
             {
                 dis[to] = dis[t] + edges[i].w;
                 if (!inqueue[to])
@@ -69,57 +69,6 @@ bool spfa(int s)
 
 int main(int argc, char const *argv[])
 {
-    int x, a, b;
-    scanf("%d%d", &n, &m);
-    for (int i = 0; i < m; ++i)
-    {
-        scanf("%d%d%d", &x, &a, &b);
-        if (x == 1)
-        {
-            addEdge(a, b, 0);
-            addEdge(b, a, 0);
-        }
-        else if (x == 2)
-        {
-            if (a == b)
-            {
-                puts("-1");
-                return 0;
-            }
-            addEdge(a, b, 1);
-        }
-        else if (x == 3)
-        {
-            addEdge(b, a, 0);
-        }
-        else if (x == 4)
-        {
-            if (a == b)
-            {
-                puts("-1");
-                return 0;
-            }
-            addEdge(b, a, 1);
-        }
-        else
-        {
-            addEdge(a, b, 0);
-        }
-    }
-    for (int i = n; i >= 1; --i)
-        addEdge(n + 1, i, 1);
-    if (spfa(n + 1))
-    {
-        ll res = 0;
-        for (int i = 1; i <= n; ++i)
-        {
-            res += dis[i];
-        }
-        printf("%lld\n", res);
-    }
-    else
-    {
-        puts("-1");
-    }
+
     return 0;
 }

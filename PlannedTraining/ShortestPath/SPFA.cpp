@@ -1,5 +1,4 @@
 // https://ac.nowcoder.com/acm/problem/14369
-
 #include <queue>
 #include <cstdio>
 #include <cstring>
@@ -9,6 +8,9 @@ using ll = long long;
 using uint = unsigned int;
 const int inf = 0x3f3f3f3f;
 
+//类型, 如果需要long long就改
+using stype = int;
+
 const int maxm = 200002; //边的最大数量;
 const int maxn = 20002;  //节点的最大数量
 int cnt = 0;
@@ -16,15 +18,15 @@ int p[maxn]; //节点指向的边
 
 int n, m;           //n个节点 m条边
 bool inqueue[maxn]; //是否在队列里
-int dis[maxn];      //距离
+stype dis[maxn];    //距离
 int in[maxn];       //进入队列的次数
 
 struct
 {
-    int w, to, next;
+    stype w, to, next;
 } edges[maxm]; //edge[0] is None, also we see if it's zero to judge it has been completed
 
-void addEdge(int from, int to, int weight)
+void addEdge(stype from, stype to, stype weight)
 {
     edges[++cnt].to = to;
     edges[cnt].next = p[from];
@@ -39,7 +41,7 @@ bool spfa(int s)
     memset(dis, inf, sizeof dis);
     memset(inqueue, false, sizeof inqueue);
     memset(in, 0, sizeof in);
-    queue<int> que;
+    queue<stype> que;
     que.push(s);
     inqueue[s] = true;
     in[s]++;

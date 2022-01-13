@@ -10,8 +10,8 @@ const int inf = 0x3f3f3f3f;
 //类型, 如果需要long long就改
 using stype = long long;
 
-const int maxm = 100010 << 1; //边的最大数量;
-const int maxn = 100010;      //节点的最大数量
+const int maxn = 100;       //节点的最大数量
+const int maxm = maxn << 1; //边的最大数量;
 int cnt = 0;
 int p[maxn]; //节点指向的边
 

@@ -12,7 +12,10 @@ int main()
 {
     int s[5] = {0, 1, 2, 3, 4};
     int i = 0;
-    cout << s[i++] << endl;
-    cout << s[++i] << endl;
+    int a;
+    a = i++;
+    cout << a << endl;
+    a = ++i;
+    cout << a << endl;
     return 0;
 }

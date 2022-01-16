@@ -1,17 +1,14 @@
-from typing import *
-
-
 class Solution:
-    def dominantIndex(self, nums: List[int]) -> int:
-        if len(nums) == 1:
-            return 0
-        nums = list(enumerate(nums))
-        nums.sort(reverse=True, key=lambda x: x[1])
-        if nums[0][1] >= nums[1][1]*2:
-            return nums[0][0]
-        else:
-            return -1
+    def totalMoney(self, n: int) -> int:
+        res = 0
+        k = n//7
+        res += k*28
+        if k > 0:
+            res += 7*(0+(k-1))*k//2
+        for i in range(n % 7):
+            res += i+1+k
+        return res
 
 
 a = Solution()
-print(a.dominantIndex([3, 6, 1, 0]))
+print(a.totalMoney(20))

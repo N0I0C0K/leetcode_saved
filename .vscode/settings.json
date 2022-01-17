@@ -12,7 +12,8 @@
         "unordered_map": "cpp",
         "xhash": "cpp",
         "ostream": "cpp",
-        "initializer_list": "cpp"
+        "initializer_list": "cpp",
+        "iostream": "cpp"
     },
     "C_Cpp.errorSquiggles": "Enabled",
     "files.exclude": {

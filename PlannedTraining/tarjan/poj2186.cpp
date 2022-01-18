@@ -20,6 +20,26 @@ int deep = 0;
 
 int du[maxn] = {0};
 
+void init()
+{
+    memset(color, 0, sizeof color);
+    memset(dfn, 0, sizeof dfn);
+    memset(low, 0, sizeof low);
+    memset(vis, 0, sizeof vis);
+    memset(cnt, 0, sizeof cnt);
+    memset(du, 0, sizeof du);
+    deep = 0;
+    sum = 0;
+    while (!res.empty())
+    {
+        res.pop();
+    }
+    for (int i = 1; i <= n; i++)
+    {
+        g[i].clear();
+    }
+}
+
 void tarjan(int u)
 {
     dfn[u] = ++deep;
@@ -33,7 +53,7 @@ void tarjan(int u)
         if (!dfn[v])
         {
             tarjan(v);
-            low[u] = min(low[u], dfn[v]);
+            low[u] = min(low[u], low[v]);
         }
         else
         {
@@ -57,56 +77,53 @@ void tarjan(int u)
 
 int main()
 {
-    scanf("%d%d", &n, &m);
-    int u, v;
-    for (int i = 0; i < m; ++i)
-    {
-        scanf("%d%d", &u, &v);
-        g[u].push_back(v);
-    }
-    for (int i = 1; i <= n; ++i)
-    {
-        if (!dfn[i])
-            tarjan(i);
-    }
 
-    for (int i = 1; i <= n; ++i)
+    while (scanf("%d%d", &n, &m) != EOF)
     {
-        /******  The different   ********/
-        int l = g[i].size();
-        for (int j = 0; j < l; ++j)
+        init();
+        int u, v;
+        for (int i = 0; i < m; ++i)
         {
-            int v = g[i][j];
-            if (color[i] != color[v])
+            scanf("%d%d", &u, &v);
+            g[u].push_back(v);
+        }
+        for (int i = 1; i <= n; ++i)
+        {
+            if (!dfn[i])
+                tarjan(i);
+        }
+
+        for (int i = 1; i <= n; ++i)
+        {
+            /******  The different   ********/
+            int l = g[i].size();
+            for (int j = 0; j < l; ++j)
             {
-                du[color[i]]++;
+                int v = g[i][j];
+                if (color[i] != color[v])
+                {
+                    du[color[i]]++;
+                }
+            }
+            /*******************************/
+            cnt[color[i]]++;
+        }
+        int tmp = 0, ans = 0;
+        for (int i = 1; i <= sum; ++i)
+        {
+            if (du[i] == 0)
+            {
+                tmp++;
+                ans = cnt[i];
             }
         }
-        /*******************************/
-        cnt[color[i]]++;
-    }
-    int tmp = 0, ans = 0;
-    for (int i = 1; i <= sum; ++i)
-    {
-        if (du[i] == 0)
+        if (tmp != 1)
         {
-            tmp++;
-            ans = cnt[i];
-        }
-    }
-    if (tmp == 0)
-    {
-        printf("0");
-    }
-    else
-    {
-        if (tmp > 1)
-        {
-            printf("0");
+            printf("0\n");
         }
         else
         {
-            printf("%d", ans);
+            printf("%d\n", ans);
         }
     }
     return 0;

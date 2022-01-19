@@ -1,14 +1,18 @@
+# https://leetcode-cn.com/problems/contains-duplicate-ii/
+
+from typing import *
+
+
 class Solution:
-    def totalMoney(self, n: int) -> int:
-        res = 0
-        k = n//7
-        res += k*28
-        if k > 0:
-            res += 7*(0+(k-1))*k//2
-        for i in range(n % 7):
-            res += i+1+k
-        return res
+    def containsNearbyDuplicate(self, nums: List[int], k: int) -> bool:
+        mnums = dict()
+        for i in range(len(nums)):
+            if nums[i] in mnums and abs(i - mnums[nums[i]]) <= k:
+                return True
+            else:
+                mnums[nums[i]] = i
+        return False
 
 
 a = Solution()
-print(a.totalMoney(20))
+print(a.containsNearbyDuplicate([1, 2, 3, 1], 3))

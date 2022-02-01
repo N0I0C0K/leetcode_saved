@@ -1,20 +1,15 @@
-from typing import *
-
-
 class Solution:
-    def uncommonFromSentences(self, s1: str, s2: str) -> List[str]:
-        mmap: Dict[str, int] = {}
-        for item in (s1+' '+s2).split():
-            if item in mmap:
-                mmap[item] += 1
-            else:
-                mmap[item] = 1
-        res = []
-        for key, val in mmap.items():
-            if val == 1:
-                res.append(key)
-        return res
+    def numberOfSteps(self, num: int) -> int:
+        if num == 0:
+            return 0
+        ans: int = 0
+        while num != 0:
+            if (num & 1) == 1:
+                ans += 1
+            num = (num >> 1)
+            ans += 1
+        return ans-1
 
 
 a = Solution()
-print(a.uncommonFromSentences('this apple is sweet sweet', 'this apple is sour'))
+print(a.numberOfSteps(0))

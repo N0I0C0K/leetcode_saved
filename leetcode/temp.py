@@ -1,8 +1,6 @@
+from typing import *
+
+
 class Solution:
-    def reversePrefix(self, word: str, ch: str) -> str:
-        i = word.find(ch)+1
-        return word[:i][::-1]+word[i:]
-
-
-a = Solution()
-print(a.reversePrefix('abcde', 'd'))
+    def sumOfUnique(self, nums: List[int]) -> int:
+        return sum(num for num, cnt in Counter(nums).items() if cnt == 1)

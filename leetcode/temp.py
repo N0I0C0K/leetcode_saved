@@ -2,5 +2,14 @@ from typing import *
 
 
 class Solution:
-    def sumOfUnique(self, nums: List[int]) -> int:
-        return sum(num for num, cnt in Counter(nums).items() if cnt == 1)
+    def countKDifference(self, nums: List[int], k: int) -> int:
+        ans = 0
+        cnt = Counter()
+        for a in nums:
+            ans += cnt[a-k]+cnt[a+k]
+            cnt[a] += 1
+        return ans
+
+
+a = Solution()
+print(a.countKDifference([1, 3], 2))

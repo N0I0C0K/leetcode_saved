@@ -10,7 +10,7 @@ using uint = unsigned int;
 const int inf = 0x3f3f3f3f;
 
 using tType = long long;                           //数据要求的类型
-const int maxn = 1e5 + 5;                          //数的个数
+const int maxn = 1e6 + 5;                          //数的个数
 int cover[maxn << 2], length[maxn << 2], yy[maxn]; //节点覆盖, 长度, 离散化的y
 
 inline int ls(int k) { return k << 1; }     //返回k的左孩子
@@ -78,7 +78,7 @@ int main()
     int yl, yr;
     for (int i = 1; i <= cnt; ++i)
     {
-        ans += length[1] * (line[i].x - line[i - 1].x);
+        ans += ll(length[1]) * (line[i].x - line[i - 1].x);
         yl = lower_bound(yy + 1, yy + len + 1, line[i].downy) - yy;
         yr = lower_bound(yy + 1, yy + len + 1, line[i].upy) - yy;
         update(yl, yr, line[i].inout, 1, len, 1);

@@ -2,13 +2,17 @@ from typing import *
 
 
 class Solution:
-    def minimumDifference(self, nums: List[int], k: int) -> int:
-        nums.sort()
-        ans = 1000010
-        for i in range(k-1, len(nums)):
-            ans = min(ans, nums[i]-nums[i-k+1])
-        return ans
+    def maxNumberOfBalloons(self, text: str) -> int:
+        ans = {key: 0 for key in 'balloon'}
+        for i in text:
+            if i in ans:
+                if i in 'lo':
+                    ans[i] += 1
+                else:
+                    ans[i] += 2
+        r = min(ans.values())
+        return r >> 1 if (r & 1 == 0) else (r-1) >> 1
 
 
 a = Solution()
-print(a.minimumDifference([9, 4, 1, 7], 2))
+print(a.maxNumberOfBalloons('ballon'))

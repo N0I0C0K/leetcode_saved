@@ -1,18 +1,6 @@
 from typing import *
 
 
-class MyData:
-    def __init__(self, key: str, count: int):
-        self.key = key
-        self.count = count
-
-    def __lt__(self, rhs: 'MyData'):
-        return self.count < rhs.count
-
-    def __gt__(self, rhs: 'MyData'):
-        return self.count > rhs.count
-
-
 class Node:
     def __init__(self, key: str = '', count=0) -> None:
         self.key = key
@@ -23,8 +11,8 @@ class Node:
     def insert(self, node: 'Node'):
         node.pre = self
         node.next = self.next
-        self.next = node
         node.next.pre = node
+        node.pre.next = node
 
     def remove(self):
         self.pre.next = self.next
@@ -67,7 +55,7 @@ class AllOne:
             t.insert(n)
 
     def getMaxKey(self) -> str:
-        return self.maxd.key
+        return '' if self.tail.pre is self.head else self.tail.key
 
     def getMinKey(self) -> str:
-        return self.mind.key
+        return '' if self.head.next is self.tail else self.head.key

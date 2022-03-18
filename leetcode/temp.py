@@ -2,14 +2,9 @@ from typing import *
 
 
 class Solution:
-    def isOneBitCharacter(self, bits: List[int]) -> bool:
-        l = len(bits)
-        i = 0
-        while i < l:
-            if i + 1 == l:
-                return True
-            a = bits[i]
-            if a == 1:
-                i += 1
-            i += 1
-        return False
+    def getMinDistance(self, nums: List[int], target: int, start: int) -> int:
+        res = 1e5
+        for i, t in enumerate(nums):
+            if t == target:
+                res = min(abs(i-start), res)
+        return res

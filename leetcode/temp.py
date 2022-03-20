@@ -1,27 +1,33 @@
 from typing import *
 
 
-class Bank:
+class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
 
-    def __init__(self, balance: List[int]):
-        self.balance = balance
-        self.n = len(balance)
 
-    def transfer(self, account1: int, account2: int, money: int) -> bool:
-        if 1 <= account1 <= self.n and 1 <= account2 <= self.n and self.balance[account1-1] >= money:
-            self.balance[account1-1] -= money
-            self.balance[account2-1] += money
-            return True
-        return False
+class Solution:
+    def tree2str(self, root: Optional[TreeNode]) -> str:
+        ans: str = ''
 
-    def deposit(self, account: int, money: int) -> bool:
-        if 1 <= account <= self.n:
-            self.balance[account-1] += money
-            return True
-        return False
-
-    def withdraw(self, account: int, money: int) -> bool:
-        if 1 <= account <= self.n and self.balance[account-1] >= money:
-            self.balance[account-1] -= money
-            return True
-        return False
+        def dfs(node: TreeNode):
+            if node is None:
+                return
+            nonlocal ans
+            ans += str(node.val)
+            if node.left is None and node.right is None:
+                return
+            if node.right is not None:
+                ans += '('
+                dfs(node.left)
+                ans += ')('
+                dfs(node.right)
+                ans += ')'
+            else:
+                ans += '('
+                dfs(node.left)
+                ans += ')'
+        dfs(root)
+        return ans

@@ -15,14 +15,15 @@ int main()
     memset(dp, inf, sizeof dp);
     dp[0] = 0;
     int a, b;
-    for (int k = 0; k < t; ++k)
+    for (int i = 0; i < t; ++i)
     {
         scanf("%d%d", &a, &b);
-        for (int j = 0; j < b; j++)
+        for (int i = a; i <= 20000; ++i)
         {
-            for (int i = a; i <= 20000; ++i)
+            if (b > 0)
             {
                 dp[i] = min(dp[i], dp[i - a] + 1);
+                --b;
             }
         }
     }

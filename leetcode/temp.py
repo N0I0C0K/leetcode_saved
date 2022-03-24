@@ -1,31 +1,16 @@
 from typing import *
 
 
-class TreeNode:
-    def __init__(self, val=0, left=None, right=None):
-        self.val = val
-        self.left = left
-        self.right = right
-
-
 class Solution:
-    def findTarget(self, root: Optional[TreeNode], k: int) -> bool:
-        data = set()
-
-        def dfs(node: TreeNode):
-            if node is None:
-                return
-            nonlocal data
-            data.add(node.val)
-            dfs(node.left)
-            dfs(node.right)
-        dfs(root)
-
-        def dfs2(node: TreeNode) -> bool:
-            if node is None:
-                return False
-            nonlocal data, k
-            if k-node.val in data and node.val + node.val != k:
-                return True
-            return dfs2(node.left) or dfs2(node.right)
-        return dfs2(root)
+    def imageSmoother(self, img: List[List[int]]) -> List[List[int]]:
+        n, m = len(img), len(img[0])
+        res = [[0 for i in range(m)] for j in range(n)]
+        for i in range(n):
+            for j in range(m):
+                nums, a = 0, 0
+                for x, y in ((i-1, j-1), (i, j-1), (i+1, j-1), (i-1, j), (i, j), (i+1, j), (i-1, j+1), (i, j+1), (i+1, j+1)):
+                    if 0 <= x < n and 0 <= y < m:
+                        nums += 1
+                        a += img[x][y]
+                res[i][j] = int(a/nums)
+        return res

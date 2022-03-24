@@ -9,25 +9,23 @@ class TreeNode:
 
 
 class Solution:
-    def tree2str(self, root: Optional[TreeNode]) -> str:
-        ans: str = ''
+    def findTarget(self, root: Optional[TreeNode], k: int) -> bool:
+        data = set()
 
         def dfs(node: TreeNode):
             if node is None:
                 return
-            nonlocal ans
-            ans += str(node.val)
-            if node.left is None and node.right is None:
-                return
-            if node.right is not None:
-                ans += '('
-                dfs(node.left)
-                ans += ')('
-                dfs(node.right)
-                ans += ')'
-            else:
-                ans += '('
-                dfs(node.left)
-                ans += ')'
+            nonlocal data
+            data.add(node.val)
+            dfs(node.left)
+            dfs(node.right)
         dfs(root)
-        return ans
+
+        def dfs2(node: TreeNode) -> bool:
+            if node is None:
+                return False
+            nonlocal data, k
+            if k-node.val in data and node.val + node.val != k:
+                return True
+            return dfs2(node.left) or dfs2(node.right)
+        return dfs2(root)

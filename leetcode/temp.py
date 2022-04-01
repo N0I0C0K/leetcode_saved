@@ -2,17 +2,21 @@ from typing import *
 
 
 class Solution:
-    def hasAlternatingBits(self, n: int) -> bool:
-        pre, now = n % 2, 0
-        n //= 2
-        while n > 0:
-            now = n % 2
-            if now == pre:
-                return False
-            pre = now
-            n //= 2
-        return True
+    def selfDividingNumbers(self, left: int, right: int) -> List[int]:
+        res = []
+
+        def check(n: int) -> bool:
+            n_s = str(n)
+            for i in n_s:
+                if i == '0' or n % int(i) != 0:
+                    return False
+            return True
+
+        for i in range(left, right+1):
+            if check(i):
+                res.append(i)
+        return res
 
 
 a = Solution()
-print(a.hasAlternatingBits(11))
+print(a.selfDividingNumbers(1, 22))
